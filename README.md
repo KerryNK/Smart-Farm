@@ -5,12 +5,14 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 ## 🌱 Features
 
 ### Real-Time Monitoring
+
 - **Soil Moisture Monitoring**: Track soil moisture levels in real-time
 - **Temperature & Humidity**: Monitor environmental conditions
 - **pH Level Tracking**: Ensure optimal soil conditions
 - **Historical Data Charts**: Visualize trends over 24 hours
 
 ### Automated Irrigation
+
 - **Smart Automation**: Auto-start irrigation when soil moisture is low
 - **Manual Control**: Start/stop irrigation manually
 - **Scheduled Irrigation**: Set daily irrigation schedules
@@ -18,6 +20,7 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 - **Irrigation History**: Complete logs of all irrigation activities
 
 ### Weather Forecasting
+
 - **7-Day Forecast**: Get detailed weather predictions
 - **Rain Alerts**: Receive notifications when rain is expected
 - **Rainfall Probability**: Track chances of rain
@@ -25,6 +28,7 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 - **Farming Recommendations**: Weather-based farming tips
 
 ### Crop Disease Detection
+
 - **Disease Database**: Comprehensive information on common crop diseases
 - **Automated Alerts**: Get notified of disease risks based on environmental conditions
 - **Prevention Tips**: Learn how to prevent crop diseases
@@ -32,6 +36,7 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 - **Risk Assessment**: Real-time disease risk analysis
 
 ### Notifications System
+
 - **Real-Time Alerts**: Stay updated on all farm activities
 - **Categorized Notifications**: Filter by irrigation, weather, disease, or system alerts
 - **Smart Notifications**: Automatic alerts for critical events
