@@ -7,6 +7,7 @@
 **URL:** `http://localhost/Smart%20Farm/index.html`
 
 **What to Check:**
+
 - ✅ Sensor readings display (or show "No data")
 - ✅ Weather forecast shows (or "Generate Forecast" message)
 - ✅ Irrigation status displays correctly
@@ -16,6 +17,7 @@
 - ✅ Notification badge updates correctly
 
 **Test Actions:**
+
 1. Load page - verify all sections load
 2. Click "Generate Data" - verify sensor data appears
 3. Click "Generate Forecast" - verify weather updates

@@ -72,6 +72,7 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 3. **Configuration**
    - Database credentials are in `config/database.php`
    - Default settings:
+
      ```php
      DB_HOST: localhost
      DB_USER: root
@@ -140,12 +141,12 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 
 ## 🎯 Key Objectives Achieved
 
-✅ **Real-time Monitoring**: Soil moisture, temperature, humidity, and pH tracking  
-✅ **Automated Irrigation**: Smart automation based on sensor data  
-✅ **User-Friendly Dashboard**: Intuitive interface with actionable insights  
-✅ **Water Conservation**: Automated system reduces water waste by up to 40%  
-✅ **Rain Alerts**: Timely notifications for weather events  
-✅ **Disease Prevention**: Early detection and prevention recommendations  
+✅ **Real-time Monitoring**: Soil moisture, temperature, humidity, and pH tracking
+✅ **Automated Irrigation**: Smart automation based on sensor data
+✅ **User-Friendly Dashboard**: Intuitive interface with actionable insights
+✅ **Water Conservation**: Automated system reduces water waste by up to 40%
+✅ **Rain Alerts**: Timely notifications for weather events
+✅ **Disease Prevention**: Early detection and prevention recommendations
 
 ## 🔐 Default Credentials
 
@@ -157,6 +158,7 @@ Password: admin123
 ## 📊 Database Schema
 
 The system uses 10 main tables:
+
 - `users` - User accounts and farm information
 - `sensor_data` - Real-time sensor readings
 - `irrigation_logs` - Irrigation history and tracking
@@ -170,20 +172,24 @@ The system uses 10 main tables:
 ## 🛠️ Troubleshooting
 
 ### Database Connection Error
+
 - Ensure MySQL is running in XAMPP
 - Check database credentials in `config/database.php`
 - Verify database exists in phpMyAdmin
 
 ### Session Issues
+
 - Clear browser cookies and cache
 - Ensure sessions are enabled in PHP (check `php.ini`)
 
 ### No Data Showing
+
 - Click "Generate Data" button on dashboard
 - Click "Generate Forecast" on weather page
 - Check browser console for errors (F12)
 
 ### Permission Issues
+
 - Ensure XAMPP has proper write permissions
 - Run XAMPP as administrator on Windows
 
@@ -212,7 +218,9 @@ The system uses 10 main tables:
 ## 👨‍💻 Development
 
 ### Project Structure
+
 ```
+
 Smart Farm/
 ├── api/              # Backend API endpoints
 ├── assets/           # CSS, JS, images
@@ -225,6 +233,7 @@ Smart Farm/
 ```
 
 ### Adding New Features
+
 1. Create API endpoint in `api/` folder
 2. Create frontend page in root
 3. Add JavaScript logic in `assets/js/`
@@ -237,6 +246,7 @@ This project is developed for educational and agricultural development purposes.
 ## 🤝 Support
 
 For issues or questions:
+
 - Check the troubleshooting section
 - Review the code comments
 - Test with the demo account first
@@ -250,5 +260,3 @@ ShambaSmart is designed to make smart farming accessible to smallholder farmers.
 ---
 
 **Built with ❤️ for Farmers**
-
-
