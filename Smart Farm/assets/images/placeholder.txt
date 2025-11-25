@@ -1,0 +1,10 @@
+This directory can be used for:
+- Logo images
+- Crop disease photos
+- User avatars
+- System icons
+- Dashboard graphics
+
+Add your images here and reference them in your HTML/CSS files.
+
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast - ShambaSmart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success" href="index.html">
+                <i class="bi bi-flower1"></i> ShambaSmart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="irrigation.html"><i class="bi bi-droplet"></i> Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="weather.html"><i class="bi bi-cloud-sun"></i> Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="diseases.html"><i class="bi bi-bug"></i> Diseases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="notifications.html">
+                            <i class="bi bi-bell"></i> Notifications
+                            <span class="notification-badge d-none" id="notificationBadge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userFullName">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <!-- Page Header -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="fw-bold"><i class="bi bi-cloud-sun text-info"></i> Weather Forecast</h2>
+                <p class="text-muted">7-day weather predictions and rain alerts</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <button class="btn btn-success" id="generateWeatherBtn">
+                    <i class="bi bi-arrow-repeat"></i> Generate Forecast
+                </button>
+            </div>
+        </div>
+
+        <!-- Weather Alerts -->
+        <div class="row mb-4" id="weatherAlertsContainer">
+            <!-- Alerts will be loaded here -->
+        </div>
+
+        <div class="row g-4">
+            <!-- 7-Day Forecast -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-calendar-week"></i> 7-Day Weather Forecast</h5>
+                    </div>
+                    <div class="card-body" id="forecastContainer">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Loading forecast...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rainfall Chart -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-bar-chart"></i> Rainfall Forecast</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="rainfallChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panel -->
+            <div class="col-md-4">
+                <!-- Today's Weather -->
+                <div class="card weather-card mb-4">
+                    <div class="card-header border-0 text-white">
+                        <h5 class="mb-0"><i class="bi bi-sun"></i> Today's Weather</h5>
+                    </div>
+                    <div class="card-body" id="todayWeather">
+                        <div class="text-center">
+                            <div class="spinner-border text-light" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rain Probability -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-droplet"></i> Rain Probability</h5>
+                    </div>
+                    <div class="card-body" id="rainProbability">
+                        <p class="text-muted text-center">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Farming Recommendations -->
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="bi bi-lightbulb"></i> Farming Tips</h5>
+                    </div>
+                    <div class="card-body" id="farmingTips">
+                        <div class="alert alert-info mb-3">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Note:</strong> Weather forecasts help optimize irrigation and protect crops.
+                        </div>
+                        <div id="tipsContent">
+                            <p class="text-muted">Loading recommendations...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/weather.js"></script>
+</body>
+</html>
+
+
