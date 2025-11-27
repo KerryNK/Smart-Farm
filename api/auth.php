@@ -22,25 +22,19 @@ switch ($action) {
     default:
         jsonResponse(['success' => false, 'message' => 'Invalid action'], 400);
 }
-
 function handleLogin() {
     $data = json_decode(file_get_contents('php://input'), true);
-    
     $username = sanitizeInput($data['username'] ?? '');
     $password = $data['password'] ?? '';
-    
     if (empty($username) || empty($password)) {
         jsonResponse(['success' => false, 'message' => 'Username and password are required'], 400);
     }
-    
     $conn = getDBConnection();
     $user = fetchRow($conn, "SELECT * FROM users WHERE username = ? OR email = ?", "ss", [$username, $username]);
-    
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['full_name'] = $user['full_name'];
-        
         jsonResponse([
             'success' => true,
             'message' => 'Login successful',
@@ -60,7 +54,6 @@ function handleLogin() {
 
 function handleRegister() {
     $data = json_decode(file_get_contents('php://input'), true);
-    
     $username = sanitizeInput($data['username'] ?? '');
     $email = sanitizeInput($data['email'] ?? '');
     $password = $data['password'] ?? '';

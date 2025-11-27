@@ -22,11 +22,11 @@ async function checkAuthentication() {
             window.currentUser = currentUser;
             initializeApp();
         } else {
-            window.location.href = 'login.html';
+            window.location.href = '/public/login.html';
         }
     } catch (error) {
         console.error('Authentication check failed:', error);
-        window.location.href = 'login.html';
+        window.location.href = '/public/login.html';
     }
 }
 
@@ -38,7 +38,7 @@ function initializeApp() {
     }
 
     // Load initial data - check if we're on the dashboard
-    const isDashboard = window.location.pathname.endsWith('index.html') || 
+    const isDashboard = window.location.pathname.endsWith('/public/index.html') || 
                         window.location.pathname.endsWith('/') || 
                         window.location.pathname === '/Smart%20Farm/' ||
                         document.getElementById('sensorChart') !== null;
@@ -703,10 +703,10 @@ async function handleLogout(e) {
     
     try {
         await fetch('api/auth.php?action=logout');
-        window.location.href = 'login.html';
+        window.location.href = '/public/login.html';
     } catch (error) {
         console.error('Logout error:', error);
-        window.location.href = 'login.html';
+        window.location.href = '/public/login.html';
     }
 }
 

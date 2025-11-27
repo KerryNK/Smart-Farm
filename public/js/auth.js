@@ -43,7 +43,7 @@ if (document.getElementById('loginForm')) {
             if (result.success) {
                 showAlert('success', 'Login successful! Redirecting...');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/public/index.html';
                 }, 1000);
             } else {
                 showAlert('danger', result.message || 'Login failed');
@@ -115,7 +115,7 @@ if (document.getElementById('registerForm')) {
             if (result.success) {
                 showAlert('success', 'Registration successful! Redirecting...');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/public/index.html';
                 }, 1500);
             } else {
                 showAlert('danger', result.message || 'Registration failed');
