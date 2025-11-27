@@ -150,10 +150,10 @@ A comprehensive web-based smart farming solution that helps farmers monitor crop
 
 ## 🔐 Default Credentials
 
-```
+``
 Username: admin
 Password: admin123
-```
+``
 
 ## 📊 Database Schema
 
@@ -219,7 +219,7 @@ The system uses 10 main tables:
 
 ### Project Structure
 
-```
+``
 
 Smart Farm/
 ├── api/              # Backend API endpoints
@@ -230,7 +230,7 @@ Smart Farm/
 ├── database/         # Database setup scripts
 ├── *.html           # Frontend pages
 └── README.md        # This file
-```
+``
 
 ### Adding New Features
 
@@ -259,4 +259,4 @@ ShambaSmart is designed to make smart farming accessible to smallholder farmers.
 
 ---
 
-**Built with ❤️ for Farmers**
+Built with ❤️ for Farmers
