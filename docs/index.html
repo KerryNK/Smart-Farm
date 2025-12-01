@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ShambaSmart</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success" href="/public/index.html">
+                <i class="bi bi-flower1"></i> ShambaSmart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/irrigation.html"><i class="bi bi-droplet"></i> Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/weather.html"><i class="bi bi-cloud-sun"></i> Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/diseases.html"><i class="bi bi-bug"></i> Diseases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="/public/notifications.html">
+                            <i class="bi bi-bell"></i> Notifications
+                            <span class="notification-badge d-none" id="notificationBadge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userFullName">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <!-- Page Header -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="fw-bold"><i class="bi bi-speedometer2 text-success"></i> Dashboard</h2>
+                <p class="text-muted">Monitor your farm's real-time data</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <button class="btn btn-outline-success me-2" id="refreshBtn">
+                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                </button>
+                <button class="btn btn-success me-2" id="generateDataBtn">
+                    <i class="bi bi-plus-circle"></i> Generate Data
+                </button>
+                <button class="btn btn-primary" id="generateMultipleDataBtn">
+                    <i class="bi bi-collection"></i> Generate 10 Readings
+                </button>
+            </div>
+        </div>
+
+        <!-- Sensor Readings -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="stat-label mb-2">Soil Moisture</p>
+                                <h3 class="stat-value mb-0" id="moistureValue">--</h3>
+                                    <div class="sensor-gauge-fill" id="moistureGauge"></div>
+                                    <div class="sensor-gauge-fill" id="moistureGauge" style="width: 0%"></div>
+                                </div>
+                                <small class="mt-2 d-block" id="moistureStatus">No data</small>
+                            </div>
+                            <div class="stat-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-droplet-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="stat-label mb-2">Temperature</p>
+                                <h3 class="stat-value mb-0" id="temperatureValue">--</h3>
+                                    <div class="sensor-gauge-fill" id="temperatureGauge"></div>
+                                    <div class="sensor-gauge-fill" id="temperatureGauge" style="width: 0%"></div>
+                                </div>
+                                <small class="mt-2 d-block" id="temperatureStatus">No data</small>
+                            </div>
+                            <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                                <i class="bi bi-thermometer-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="stat-label mb-2">Air Humidity</p>
+                                <h3 class="stat-value mb-0" id="humidityValue">--</h3>
+                                    <div class="sensor-gauge-fill" id="humidityGauge"></div>
+                                    <div class="sensor-gauge-fill" id="humidityGauge" style="width: 0%"></div>
+                                </div>
+                                <small class="mt-2 d-block" id="humidityStatus">No data</small>
+                            </div>
+                            <div class="stat-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-moisture"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card stat-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <p class="stat-label mb-2">Soil pH Level</p>
+                                <h3 class="stat-value mb-0" id="phValue">--</h3>
+                                    <div class="sensor-gauge-fill" id="phGauge"></div>
+                                    <div class="sensor-gauge-fill" id="phGauge" style="width: 0%"></div>
+                                </div>
+                                <small class="mt-2 d-block" id="phStatus">No data</small>
+                            </div>
+                            <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Sensor Chart -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> Sensor Data Trends</h5>
+                        <small class="text-muted">Last 24 hours</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="sensorChart"></canvas>
+                        </div>
+                        <small class="text-muted d-block mt-2">
+                            <i class="bi bi-clock"></i> Last updated: <span id="lastUpdate">--</span>
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Irrigation Status -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-droplet"></i> Irrigation Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h4 class="mb-1">Current Status</h4>
+                                <span class="badge bg-secondary" id="irrigationStatus">
+                                    <span class="status-indicator"></span> Inactive
+                                </span>
+                                <div class="mt-2" id="irrigationDetails">
+                                    <small class="text-muted">No active irrigation</small>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="/public/irrigation.html" class="btn btn-primary">
+                                    <i class="bi bi-gear"></i> Control Panel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Forecast -->
+            <div class="col-md-4">
+                <div class="card weather-card">
+                    <div class="card-header border-0 text-white">
+                        <h5 class="mb-0"><i class="bi bi-cloud-sun"></i> Weather Today</h5>
+                    </div>
+                    <div class="card-body" id="weatherForecast">
+                        <div class="text-center">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-0 bg-white">
+                        <button class="btn btn-sm btn-outline-primary w-100" id="generateWeatherBtn">
+                            <i class="bi bi-arrow-repeat"></i> Generate Forecast
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Forecast -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-calendar-week"></i> 3-Day Forecast</h5>
+                    </div>
+                    <div class="card-body" id="forecastList">
+                        <p class="text-muted text-center">No forecast data available</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="/public/weather.html" class="btn btn-sm btn-outline-success w-100">
+                            View Full Forecast <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-lightning"></i> Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="/public/irrigation.html" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-droplet-fill"></i> Start Irrigation
+                            </a>
+                            <a href="/public/diseases.html" class="btn btn-outline-warning btn-sm">
+                                <i class="bi bi-bug-fill"></i> Check Disease Alerts
+                            </a>
+                            <a href="/public/weather.html" class="btn btn-outline-info btn-sm">
+                                <i class="bi bi-cloud-rain-fill"></i> View Rain Forecast
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/bootstrap.bundle.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/app.js"></script>
+</body>
+</html>
+
+
