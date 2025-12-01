@@ -13,13 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
 // Check if user is authenticated
 async function checkAuthentication() {
     try {
-        const response = await fetch('api/auth.php?action=check');
+        const response = await fetch('/api/auth.php?action=check');
         const result = await response.json();
 
         if (result.authenticated) {
             currentUser = result.user;
             // Mark currentUser as available for other scripts
             window.currentUser = currentUser;
+            // If user is on the login or register page, redirect to dashboard
+            const isLoginPage = window.location.pathname.endsWith('/public/login.html') || window.location.pathname.endsWith('/login.html');
+            const isRegisterPage = window.location.pathname.endsWith('/public/register.html') || window.location.pathname.endsWith('/register.html');
+            if (isLoginPage || isRegisterPage) {
+                window.location.href = '/public/index.html';
+                return;
+            }
             initializeApp();
         } else {
             window.location.href = '/public/login.html';

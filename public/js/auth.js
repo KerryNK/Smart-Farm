@@ -30,7 +30,7 @@ if (document.getElementById('loginForm')) {
         loginBtn.querySelector('.btn-text').textContent = 'Logging in...';
 
         try {
-            const response = await fetch('api/auth.php?action=login', {
+            const response = await fetch('/api/auth.php?action=login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ if (document.getElementById('registerForm')) {
         registerBtn.querySelector('.btn-text').textContent = 'Creating Account...';
 
         try {
-            const response = await fetch('api/auth.php?action=register', {
+            const response = await fetch('/api/auth.php?action=register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
